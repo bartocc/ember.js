@@ -45,7 +45,8 @@ export default function moduleFor(description, TestClass, ...mixins) {
   let proto = TestClass.prototype;
 
   while (proto !== Object.prototype) {
-    Object.keys(proto).forEach(generateTest);
+    let names = Object.getOwnPropertyNames(proto);
+    names.forEach(generateTest);
     proto = Object.getPrototypeOf(proto);
   }
 
